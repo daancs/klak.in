@@ -1,6 +1,6 @@
 # Opens the door to Chabo
 
-To try it out, please use the [staging version](https://staging.open.anton.pizza) and the [staging api](https://staging.api.open.anton.pizza/unlock). Aptus might know their shit and since it uses my credentials and I dont want to get in trouble with CSB for excessive use hehe
+To try it out, please use the ***Coming soon*** and the ***Coming soon***. Aptus might know their shit and since it uses my credentials and I dont want to get in trouble with CSB for excessive use hehe
 <br>
 The main application can be visited at **Coming soon** and the api can be found at **Coming soon**
 <br>
