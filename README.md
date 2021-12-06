@@ -4,7 +4,7 @@ To try it out, please use the [staging version](https://staging.open.anton.pizza
 <br>
 The main application can be visited at https://open.anton.pizza and the api can be found at https://api.open.anton.pizza/unlock
 <br>
-This will work with other CSB doors as well. Right now it's is hard coded for the A door since only losers live in B or anywhere else
+This will work with other CSB doors as well. Right now it's is hard coded for the A door but in the future it is planned to be able to choose what door you want to open.
 <br>
 
 ### Use the script for opening the door:
