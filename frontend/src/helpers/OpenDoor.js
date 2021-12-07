@@ -1,7 +1,7 @@
 let isRunning = false
 export async function openDoor() {
   let complete = false
-  let triesBeforeGiveUp = 5
+  let triesBeforeGiveUp = 3
   // ensure the call isn't done more than once
   if (isRunning) {
     return
@@ -9,7 +9,7 @@ export async function openDoor() {
   isRunning = true
   while (!complete) {
     // retry on fail
-    const url = getAlohomoraEndpoint(window.location.host)
+    const url = 'http://localhost:3000/unlock'
 
     try {
       return await (await fetch(url)).json()
@@ -24,11 +24,11 @@ export async function openDoor() {
   }
 }
 
-export function getAlohomoraEndpoint(host) {
+/*export function getAlohomoraEndpoint(host) {
   if (process.env.NODE_ENV === 'development') {
     return process.env.ALOHOMORA_ENDPOINT || 'https://staging.api.open.anton.pizza/unlock'
   }
   return host.match(/staging/i)
     ? 'https://staging.api.open.anton.pizza/unlock'
     : 'https://api.open.anton.pizza/unlock'
-}
+}*/

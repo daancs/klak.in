@@ -25,6 +25,7 @@ if (process.env.NODE_ENV !== 'test') {
 async function isDatabaseUp() {
   return new Promise(async res => {
     try {
+      console.log(`database url: ${process.env.CONNECTION_STRING}`)
       console.log('attempting to connect to database...')
       await knex.migrate.latest()
       console.log('connected to database successfully')
