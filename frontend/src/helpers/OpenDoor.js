@@ -9,7 +9,7 @@ export async function openDoor() {
   isRunning = true
   while (!complete) {
     // retry on fail
-    const url = 'http://localhost:3000/unlock'
+    const url = 'http://localhost:8080/unlock'
 
     try {
       return await (await fetch(url)).json()
