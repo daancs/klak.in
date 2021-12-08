@@ -121,7 +121,7 @@ function getAptusUrlFromPayload(payload) {
   return `${urlParts[0]}%20${urlParts[1]}`
 }
 
-async function unlockDoor(doorID = 116402) {
+async function unlockDoor(doorID = 116400) {
   try {
     const csbCookies = await getCsbCookies()
     console.log('--------------------------')
