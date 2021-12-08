@@ -4,10 +4,12 @@ import RequestHOC from './HOC/Request'
 import OpenDoorView from './Components/OpenDoorView'
 import LoaderView from './Components/LoaderView'
 import ResultView from './Components/ResultView'
+import AboutMeView from './Components/AboutMeView'
 
 function App() {
   return (
-    <div className="cover-all">
+    <div className="divide">
+      <div className="cover-all">
       <RequestHOC>
         {(openDoor, loading, res) => {
           if (res !== undefined) {
@@ -18,7 +20,12 @@ function App() {
           return <OpenDoorView openDoor={openDoor} />
         }}
       </RequestHOC>
+      </div>
+      <div className="about-me">
+        <AboutMeView />
+      </div>
     </div>
+  
   )
 }
 
