@@ -117,7 +117,6 @@ function getAptusUrlFromPayload(payload) {
     'aptuslogin@APTUSPORT'
   ].objekt[0].aptusUrl.split(' ')
   
-  console.log(urlParts)
   return `${urlParts[0]}%20${urlParts[1]}`
 }
 
@@ -130,9 +129,9 @@ async function unlockDoor(doorID = 116400) {
     const aptusCookie = await getAptusCookies(aptusUrl)
     console.log('--------------------------')
     const unlockMsg = await _unlockDoor(aptusCookie, doorID)
-    if (unlockMsg !== '{"StatusText":"Door is unlocked","HeaderStatusText":"Status"}') {
+    if (unlockMsg !== '{"StatusText":"Dörren är upplåst","HeaderStatusText":"Status"}') {
       console.log(
-        `Bad return body,\nexpect: "{"StatusText":"Door is unlocked","HeaderStatusText":"Status"}"\ngot: ${unlockMsg}`,
+        `Bad return body,\nexpect: "{"StatusText":"Dörren är upplåst","HeaderStatusText":"Status"}"\ngot: ${unlockMsg}`,
       )
       return { success: false }
     }
