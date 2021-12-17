@@ -7,7 +7,7 @@ const ResultView = props => {
   if (success) {
     return (
       <div className="center">
-        <span className="center">door opened, have a nice day :)</span>
+        <span className="center">Door opened, have a nice day :)</span>
         <a className="mail center" href="mailto:info@klak.in?subject=you good&body=<3">
           tell me im good
         </a>
