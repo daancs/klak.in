@@ -21,9 +21,9 @@ function App() {
         }}
       </RequestHOC>
       </div>
-      <div className="about-me">
+      {/*<div className="about-me">
         <AboutMeView />
-      </div>
+      </div>*/}
     </div>
   
   )

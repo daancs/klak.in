@@ -9,7 +9,7 @@ export async function openDoor() {
   isRunning = true
   while (!complete) {
     // retry on fail
-    const url = 'http://localhost:8080/unlock'
+    const url = 'http://api.klak.in/unlock'
 
     try {
       return await (await fetch(url)).json()
