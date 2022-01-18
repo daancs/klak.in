@@ -5,9 +5,10 @@ const THRESHOLD = 8000 || process.env.THRESHOLD
 
 const unlock = ('/',
 async (req, res) => {
+  const { id } = req.params
   try {
     const result = await hasEnoughTimePassed(THRESHOLD)
-    const success = result.success && (await unlockDoor()).success
+    const success = result.success && (await unlockDoor(id)).success
     await addUnlock(success)
     console.log(`success: ${success}`)
     res.status(200).json({ success, wait: result.wait })

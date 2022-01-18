@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 
 const LockCardView = ( {openDoor, doorID}) => {
-
+    return (
     <div class="lockCard clickable" onClick={openDoor}>
             <div class="lockCardHeader">
                 
                 <span></span>
             </div>
     </div>
-
+    )
 }
 
 

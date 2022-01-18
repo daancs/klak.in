@@ -5,6 +5,7 @@ import OpenDoorView from './Components/OpenDoorView'
 import LoaderView from './Components/LoaderView'
 import ResultView from './Components/ResultView'
 import AboutMeView from './Components/AboutMeView'
+import LockCardView from './Components/LockCardView'
 
 function App() {
   return (
