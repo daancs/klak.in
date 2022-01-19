@@ -9,7 +9,7 @@ export async function openDoor() {
   isRunning = true
   while (!complete) {
     // retry on fail
-    const url = 'http://api.klak.in/unlock'
+    const url = getAlohomoraEndpoint();
 
     try {
       return await (await fetch(url)).json()
@@ -24,11 +24,9 @@ export async function openDoor() {
   }
 }
 
-/*export function getAlohomoraEndpoint(host) {
+export function getAlohomoraEndpoint() {
   if (process.env.NODE_ENV === 'development') {
-    return process.env.ALOHOMORA_ENDPOINT || 'https://staging.api.open.anton.pizza/unlock'
+    return 'http://localhost:8080/unlock'
   }
-  return host.match(/staging/i)
-    ? 'https://staging.api.open.anton.pizza/unlock'
-    : 'https://api.open.anton.pizza/unlock'
-}*/
+  return `https://api.klak.in/unlock`
+}
