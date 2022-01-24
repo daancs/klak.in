@@ -1,10 +1,10 @@
 # Opens the door to Chabo
 
-To try it out, please use the ***Coming soon*** and the ***Coming soon***. Aptus might know their shit and since it uses my credentials and I dont want to get in trouble with CSB for excessive use hehe
+To try it out, please use the [klak.in](https://klak.in). Aptus might know their shit and since it uses my credentials and I dont want to get in trouble with CSB for excessive use hehe
 <br>
-The main application can be visited at **Coming soon** and the api can be found at **Coming soon**
+The main application can be visited at [klak.in](https://klak.in) and the api can be found at [api.klak.in](https://api.klak.in)
 <br>
-This will work with other CSB doors as well. Right now it is hard coded for the A door but in the future it is planned to be able to choose what door you want to open.
+This will work with other CSB doors as well. Right now it is hard coded for the B door but in the future it is planned to be able to choose what door you want to open.
 <br>
 
 ### Use the script for opening the door:
@@ -20,8 +20,3 @@ This will work with other CSB doors as well. Right now it is hard coded for the 
 
 The frontend application uses React and can be found in frontend/.
 
-## Infra
-
-Everything is hosted on a GCE server with traefik as edge router and Circle Ci to do all the sweet CI/CD.
-
-Pr's welcome
