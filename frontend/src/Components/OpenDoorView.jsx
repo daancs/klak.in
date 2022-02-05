@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const OpenDoorView = ({ openDoor }) => {
   return (
     <div className="cover-all clickable" onClick={openDoor}>
-      <span className="center">Press anywhere to unlock</span>
+      <span className="center">Press anywhere to unlock 7B</span>
     </div>
   )
 }

@@ -5,18 +5,18 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "dev": "NODE_ENV=development CONNECTION_STRING=postgres://mcoa_app:password@localhost:5432/mcoa_dev APTUS_URL=https://apt-www.chalmersstudentbostader.se CSB_URL=https://www.chalmersstudentbostader.se nodemon src/index.js",
     "test": "CONNECTION_STRING=postgres://mcoa_app:password@localhost:5432/mcoa_test jest",
-    "comment": "NODE_ENV=development CONNECTION_STRING=postgres://mcoa_app:password@localhost:5432/mcoa_dev APTUS_URL=https://apt-www.chalmersstudentbostader.se CSB_URL=https://www.chalmersstudentbostader.se nodemon src/index.js"
+    "comment": "NODE_ENV=development CONNECTION_STRING=postgres://mcoa_app:password@localhost:5432/mcoa_dev APTUS_URL=https://apt-www.chalmersstudentbostader.se CSB_URL=https://www.chalmersstudentbostader.se node src/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
-    "knex": "^0.21.1",
+    "knex": "^1.0.2",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
-    "pg": "^8.0.3",
+    "pg": "^8.7.3",
     "win-node-env": "^0.5.0"
   },
   "devDependencies": {

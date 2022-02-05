@@ -1,0 +1,12 @@
+{
+    "doors" : [
+        {
+            "name" : "Kemivägen 7B",
+            "doorID" : 116400 
+        },
+        {
+            "name" : "Kemivägen 7A",
+            "doorID" : 116402 
+        }
+    ]
+} 

@@ -7,9 +7,12 @@
 }
 
 .cover-all {
-  height: 80vh;
+  height: 100vh;
   width: 100vw;
-  display: grid;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .clickable {
   cursor: pointer;
@@ -52,4 +55,37 @@ img {
 }
 .forked .link-to-anton:hover {
   color: #444444;
+}
+
+.lockCard {
+  background: #222222;
+  margin: 2rem;
+  height: 35%;
+  width: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: -3px -3px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+.lockCardHeader {
+  font-size: 2rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  margin: 10% 5%;
+  color: #f3f3f3;
+}
+
+.lockCardBody {
+  background: #222222;
+  color: #ffd;
+  font-size: 1.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  padding: 1rem 0;
+  width: 100%;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
 }
