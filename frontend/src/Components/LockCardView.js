@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const LockCardView = ({ openDoor, doorID, name }) => {
     return (
-        <div id={doorID} className="lockCard clickable" onClick={openDoor}>
+        <div id={doorID} className="lockCard clickable" onClick={() => openDoor(doorID)}>
             <div className="lockCardHeader">
                 <span>{name}</span>
             </div>

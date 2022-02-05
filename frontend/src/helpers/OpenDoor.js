@@ -1,7 +1,9 @@
 let isRunning = false
-export async function openDoor() {
+export async function openDoor(doorID) {
   let complete = false
   let triesBeforeGiveUp = 3
+  
+  console.log(doorID);
   // ensure the call isn't done more than once
   if (isRunning) {
     return
@@ -9,7 +11,7 @@ export async function openDoor() {
   isRunning = true
   while (!complete) {
     // retry on fail
-    const url = getAlohomoraEndpoint();
+    const url = getAlohomoraEndpoint(doorID);
 
     try {
       return await (await fetch(url)).json()
@@ -24,9 +26,9 @@ export async function openDoor() {
   }
 }
 
-export function getAlohomoraEndpoint() {
+export function getAlohomoraEndpoint(doorID) {
   if (process.env.NODE_ENV === 'development') {
-    return 'http://localhost:8080/unlock'
+    return `http://localhost:8080/unlock/${doorID}`
   }
-  return `https://api.klak.in/unlock`
+  return `https://api.klak.in/unlock/${doorID}`
 }

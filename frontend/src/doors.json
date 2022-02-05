@@ -2,11 +2,11 @@
     "doors" : [
         {
             "name" : "Kemivägen 7B",
-            "doorID" : "116400" 
+            "doorID" : 116400 
         },
         {
             "name" : "Kemivägen 7A",
-            "doorID" : "116402" 
+            "doorID" : 116402 
         }
     ]
-}
+} 

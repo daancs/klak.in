@@ -9,9 +9,9 @@ export default class RequestHOC extends Component {
   state = {
     loading: false,
   }
-  _openDoor = async () => {
+  _openDoor = async (doorID) => {
     this.setState({ loading: true })
-    const res = await openDoor()
+    const res = await openDoor(doorID)
     this.setState({ loading: false, res })
   }
 
