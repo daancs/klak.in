@@ -8,7 +8,7 @@ const LockCardView = ({ openDoor, doorID, name }) => {
             <div className="lockCardHeader">
                 <span>{name}</span>
             </div>
-            <img class="portpic" src={doorID+".png"} alt="port"/>
+            <img className="portpic" src={doorID+".png"} alt="port"/>
             <div className="lockCardBody">
                 <span>Click on card to open</span>
             </div>

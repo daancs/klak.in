@@ -3,7 +3,7 @@ const { unlockDoor } = require('../services/unlock.service')
 
 const THRESHOLD = 8000 || process.env.THRESHOLD
 
-const unlock = ('/',
+const unlock = ('/unlock/:id',
 async (req, res) => {
   const { id } = req.params
   try {

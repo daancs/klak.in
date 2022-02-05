@@ -4,7 +4,6 @@ import RequestHOC from './HOC/Request'
 //import OpenDoorView from './Components/OpenDoorView'
 import LoaderView from './Components/LoaderView.jsx'
 import ResultView from './Components/ResultView.jsx'
-import AboutMeView from './Components/AboutMeView.jsx'
 import LockCardView from './Components/LockCardView.jsx'
 // import doors.json as jsonfile
 import doors from './doors.json'
@@ -36,7 +35,6 @@ function App() {
 				</RequestHOC>
 			</div>
 		</div>
-
 	)
 }
 
