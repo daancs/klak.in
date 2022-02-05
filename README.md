@@ -1,6 +1,6 @@
 # Opens the door to Chabo
 
-To try it out, please use the [klak.in](https://klak.in). Aptus might know their shit and since it uses my credentials and I dont want to get in trouble with CSB for excessive use hehe
+To try it out, please use the [klak.in](https://klak.in). Please don't spread too much, aptus might know their shit and I don't want to get in trouble for excessive use.
 <br>
 The main application can be visited at [klak.in](https://klak.in) and the api can be found at [api.klak.in](https://api.klak.in)
 <br>
