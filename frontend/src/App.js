@@ -2,10 +2,10 @@ import React from 'react'
 import './App.css'
 import RequestHOC from './HOC/Request'
 //import OpenDoorView from './Components/OpenDoorView'
-import LoaderView from './Components/LoaderView'
-import ResultView from './Components/ResultView'
-import AboutMeView from './Components/AboutMeView'
-import LockCardView from './Components/LockCardView'
+import LoaderView from './Components/LoaderView.jsx'
+import ResultView from './Components/ResultView.jsx'
+import AboutMeView from './Components/AboutMeView.jsx'
+import LockCardView from './Components/LockCardView.jsx'
 // import doors.json as jsonfile
 import doors from './doors.json'
 
@@ -28,19 +28,12 @@ function App() {
 						} else if (loading) {
 							return <LoaderView />
 						}
-						/*return Array.from(chaboDoors).map(([doorID, name]) => (
-						  <LockCardView key={doorID} openDoor={openDoor} doorID={doorID} name={name} />
-						))*/
 						return Array.from(map).map(([id, name]) => {
 							return <LockCardView key={id} openDoor={openDoor} doorID={id} name={name} />
 						})
-						//return <LockCardView openDoor={openDoor, 116400} /> //<OpenDoorView openDoor={openDoor} />
 					}
 					}
 				</RequestHOC>
-			</div>
-			<div className="about-me">
-				<AboutMeView />
 			</div>
 		</div>
 

@@ -7,7 +7,7 @@
 }
 
 .cover-all {
-  height: 80vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
@@ -58,23 +58,24 @@ img {
 }
 
 .lockCard {
-  background: #f3f3f3;
+  background: #222222;
   margin: 2rem;
-  height: 40%;
+  height: 35%;
   width: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: -3px -3px 15px 0px rgba(0, 0, 0, 0.2);
 }
 
 .lockCardHeader {
   font-size: 2rem;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  margin: 2.5rem 1.5rem;
+  margin: 10% 5%;
+  color: #f3f3f3;
 }
 
 .lockCardBody {
