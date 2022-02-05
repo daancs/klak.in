@@ -13,8 +13,9 @@
       "experimentalObjectRestSpread": true
     },
     "ecmaVersion": 2017,
+    "requireConfigFile": false,
     "sourceType": "module"
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "plugins": ["react"]
 }
