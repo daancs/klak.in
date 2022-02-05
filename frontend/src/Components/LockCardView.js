@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const LockCardView = ( {openDoor, doorID}) => {
+const LockCardView = ({ openDoor, doorID, name }) => {
     return (
-    <div class="lockCard clickable" onClick={openDoor}>
-            <div class="lockCardHeader">
-                
-                <span></span>
+        <div id={doorID} className="lockCard clickable" onClick={openDoor}>
+            <div className="lockCardHeader">
+                <span>{name}</span>
             </div>
-    </div>
+            <div className="lockCardBody">
+                <span>Click here to open</span>
+            </div>
+        </div>
     )
 }
 
@@ -18,7 +20,8 @@ const LockCardView = ( {openDoor, doorID}) => {
 LockCardView.propTypes = {
     openDoor: PropTypes.func.isRequired,
     doorID: PropTypes.number.isRequired,
-  }
+    name: PropTypes.string.isRequired,
+}
 
 export default LockCardView
 
