@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "dependencies": "^0.0.1",
-    "node-fetch": "^2.6.6"
-  },
-  "optionalDependencies": {
-    "win-node-env": "^0.5.0"
-  }
-}
