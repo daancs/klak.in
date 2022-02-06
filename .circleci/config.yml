@@ -1,186 +1,26 @@
-version: 2
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
 
-aliases:
-  - &restore-alohomora-cache
-    restore_cache:
-      keys:
-        - alohomora-node-dep-{{ .Branch }}-{{ checksum "alohomora/yarn.lock"}}
-        - alohomora-node-dep-{{ .Branch }}
-        - alohomora-node-dep-
-  - &save-alohomora-cache
-    save_cache:
-      paths:
-        - alohomora/node_modules
-      key: alohomora-node-dep-{{ .Branch }}-{{ checksum "alohomora/yarn.lock"}}
-  - &restore-frontend-cache
-    restore_cache:
-      keys:
-        - frontend-node-dep-{{ .Branch }}-{{ checksum "frontend/yarn.lock"}}
-        - frontend-node-dep-{{ .Branch }}
-        - frontend-node-dep-
-  - &save-frontend-cache
-    save_cache:
-      paths:
-        - frontend/node_modules
-      key: frontend-node-dep-{{ .Branch }}-{{ checksum "frontend/yarn.lock"}}
-  - &docker-login echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - &remove-old-images ssh -oStrictHostKeyChecking=no "ci@${STAGE}.open.anton.pizza" "bash -s" < scripts/ci-scripts/remove-old-images.sh
-  - &cp-gcloud-key echo $GCLOUD_SERVICE_KEY > cloud_key.json && scp -oStrictHostKeyChecking=no cloud_key.json "ci@${STAGE}.open.anton.pizza:"
-
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build-frontend:
+  say-hello:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: circleci/node:10.15
-    working_directory: ~/repo
+      - image: cimg/base:stable
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - setup_remote_docker
-      - run: *docker-login
       - run:
-          command: |
-            docker build -t ${DOCKER_USERNAME}/mcoa_frontend:$(source scripts/ci-scripts/short-sha.sh) frontend
-            docker push ${DOCKER_USERNAME}/mcoa_frontend:$(source scripts/ci-scripts/short-sha.sh)
+          name: "Say hello"
+          command: "echo Hello, World!"
 
-  deploy-frontend:
-    docker:
-      - image: google/cloud-sdk
-    steps:
-      - checkout
-      - run: ssh -oStrictHostKeyChecking=no "ci@${STAGE}.open.anton.pizza" "bash -s" < scripts/ci-scripts/deploy-frontend.sh ${STAGE} ${DOCKER_USERNAME} $(source scripts/ci-scripts/short-sha.sh)
-      - run: *remove-old-images
-
-  test-alohomora:
-    docker:
-      - image: circleci/node:10.15
-        environment:
-          NODE_ENV: "test"
-      - image: antonhager/mcoa_mock_server
-      - image: postgres:10.5
-        environment:
-          POSTGRES_USER: mcoa_app
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: mcoa_test
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - *restore-alohomora-cache
-      - run: yarn --cwd alohomora install
-      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: yarn --cwd alohomora run test
-      - *save-alohomora-cache
-
-  build-alohomora:
-    docker:
-      - image: circleci/node:10.15
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: *docker-login
-      - run:
-          command: |
-            docker build -t ${DOCKER_USERNAME}/alohomora:$(source scripts/ci-scripts/short-sha.sh) alohomora
-            docker push ${DOCKER_USERNAME}/alohomora:$(source scripts/ci-scripts/short-sha.sh)
-
-  deploy-alohomora:
-    docker:
-      - image: circleci/node:10.15
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run: *cp-gcloud-key
-      - run: ssh -oStrictHostKeyChecking=no "ci@${STAGE}.open.anton.pizza" "bash -s" < scripts/ci-scripts/deploy-alohomora.sh ${STAGE} ${DOCKER_USERNAME} $(source scripts/ci-scripts/short-sha.sh)
-      - run: *remove-old-images
-
-  build-mock-server:
-    docker:
-      - image: circleci/node:10.15
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: *docker-login
-      - run:
-          command: |
-            docker build -t $DOCKER_USERNAME/mcoa_mock_server:$(source scripts/ci-scripts/short-sha.sh) mock-server/ 
-            docker push $DOCKER_USERNAME/mcoa_mock_server:$(source scripts/ci-scripts/short-sha.sh)
-
-  deploy-mock-server:
-    docker:
-      - image: circleci/node:10.15
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run: ssh -oStrictHostKeyChecking=no "ci@${STAGE}.open.anton.pizza" "bash -s" < scripts/ci-scripts/deploy-mock-server.sh ${DOCKER_USERNAME} $(source scripts/ci-scripts/short-sha.sh)
-      - run: *remove-old-images
-
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  version: 2
-
-  frontend-prod:
+  say-hello-workflow:
     jobs:
-      - build-frontend:
-          context: production
-          filters:
-            branches:
-              only: /master/
-      - deploy-frontend:
-          context: production
-          requires:
-            - build-frontend
-
-  alohomora-prod:
-    jobs:
-      - test-alohomora:
-          context: production
-          filters:
-            branches:
-              only: /master/
-      - build-alohomora:
-          context: production
-          requires:
-            - test-alohomora
-      - deploy-alohomora:
-          context: production
-          requires:
-            - build-alohomora
-
-  frontend-staging:
-    jobs:
-      - build-frontend:
-          context: staging
-          filters:
-            branches:
-              only: /staging/
-      - deploy-frontend:
-          context: staging
-          requires:
-            - build-frontend
-
-  alohomora-staging:
-    jobs:
-      - test-alohomora:
-          context: staging
-          filters:
-            branches:
-              only: /staging/
-      - build-alohomora:
-          context: staging
-          requires:
-            - test-alohomora
-      - deploy-alohomora:
-          context: staging
-          requires:
-            - build-alohomora
-
-  mock-server:
-    jobs:
-      - build-mock-server:
-          context: staging
-          filters:
-            branches:
-              only: /staging/
-      - deploy-mock-server:
-          context: staging
-          requires:
-            - build-mock-server
+      - say-hello
