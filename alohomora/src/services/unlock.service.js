@@ -1,9 +1,11 @@
+const logSuccess = require('../helpers/logger').logSuccess
 const fetch = require('node-fetch')
 
 const CSB_URL = process.env.CSB_URL || 'http://localhost:1111'
 const APTUS_URL = process.env.APTUS_URL || 'http://localhost:1111'
 const LOG = require('../secrets').LOG || 'nice'
 const PASSWORD = require('../secrets').PASSWORD || 'nice'
+
 
 async function getCsbCookies() {
   let cookies
@@ -135,6 +137,8 @@ async function unlockDoor(doorID = 116400) {
       )
       return { success: false }
     }
+    // log the success and timestamp to a log file in the src directory
+    logSuccess(doorID);
     return { success: true }
   } catch (err) {
     console.error(err)
