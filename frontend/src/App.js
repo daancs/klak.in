@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import RequestHOC from './HOC/Request'
+import { validateToken } from './helpers/TokenValidator'
 //import OpenDoorView from './Components/OpenDoorView'
 import LoaderView from './Components/LoaderView.jsx'
 import ResultView from './Components/ResultView.jsx'
@@ -17,25 +18,40 @@ function App() {
 		map.set(door.doorID, door.name);
 	});
 
-	return (
-		<div className="divide">
-			<div className="cover-all">
-				<RequestHOC>
-					{(openDoor, loading, res) => {
-						if (res !== undefined) {
-							return <ResultView res={res} />
-						} else if (loading) {
-							return <LoaderView />
-						}
-						return Array.from(map).map(([id, name]) => {
-							return <LockCardView key={id} openDoor={openDoor} doorID={id} name={name} />
-						})
-					}
-					}
-				</RequestHOC>
+	const [token, setToken] = React.useState("");
+
+	if (!(validateToken(token))) {
+		console.log(validateToken(token))
+		console.log(token)
+		return (
+			<div className="login">
+				<h1>Authentication needed</h1>
+				<span>(<a href='mailto:info@klak.in'>contact me</a> if you do not know the password)</span>
+				<br></br>
+				<input type="text" placeholder="Enter token" onChange={(e) => setToken(e.target.value)} />
 			</div>
-		</div>
-	)
+		);
+	} else {
+		return (
+			<div className="divide">
+				<div className="cover-all">
+					<RequestHOC>
+						{(openDoor, loading, res) => {
+							if (res !== undefined) {
+								return <ResultView res={res} />
+							} else if (loading) {
+								return <LoaderView />
+							}
+							return Array.from(map).map(([id, name]) => {
+								return <LockCardView key={id} openDoor={openDoor} doorID={id} name={name} />
+							})
+						}
+						}
+					</RequestHOC>
+				</div>
+			</div>
+		)
+	}
 }
 
 export default App
