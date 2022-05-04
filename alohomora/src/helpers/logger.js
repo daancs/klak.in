@@ -1,8 +1,9 @@
 // log the message to a txt file in the src directory
 const fs = require('fs')
 
-const logSuccess = (doorID) => {
+const logSuccess = async (doorID) => {
     let door;
+    console.log(door);
     if (doorID === 116400) {
         door = '7A';
     } else {

@@ -20,7 +20,7 @@ export async function openDoor(doorID) {
         return false
       }
       await new Promise(res => {
-        setTimeout(() => res(), 1500)
+        setTimeout(() => res(), 3000)
       })
     }
   }

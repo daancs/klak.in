@@ -118,11 +118,12 @@ function getAptusUrlFromPayload(payload) {
   const urlParts = JSON.parse(payload.substring(7, payload.length - 2)).data[
     'aptuslogin@APTUSPORT'
   ].objekt[0].aptusUrl.split(' ')
-  
+
   return `${urlParts[0]}%20${urlParts[1]}`
 }
 
 async function unlockDoor(doorID = 116400) {
+  console.log(doorID)
   try {
     const csbCookies = await getCsbCookies()
     console.log('--------------------------')
@@ -138,7 +139,8 @@ async function unlockDoor(doorID = 116400) {
       return { success: false }
     }
     // log the success and timestamp to a log file in the src directory
-    logSuccess(doorID);
+    console.log(doorID)
+    await logSuccess(doorID)
     return { success: true }
   } catch (err) {
     console.error(err)
