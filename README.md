@@ -22,5 +22,5 @@ The frontend application uses React and can be found in frontend/.
 
 ## Planned features
 - ~~Open both 7A and 7B~~
-- Authentication needed to open door(s)
+- ~~Authentication needed to open door(s)
   - This is just essentially so that only "trusted" persons can open the doors. Have been getting complaints that it is unsafe (which is true) so I figured making a simple password to access the opening function should work just fine.
