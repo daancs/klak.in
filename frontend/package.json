@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://klak.in/",
+  "homepage": "https://www.klak.in/",
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.14.0",

@@ -1,15 +1,21 @@
-FROM node:10 as builder
-RUN mkdir /usr/src/app
+FROM node:16-alpine
+
+ENV PORT 3000
+
+# Create app directory
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY package.json yarn.lock /usr/src/app/
-RUN yarn
+
+# Installing dependencies
+COPY package*.json /usr/src/app/
+RUN npm install
+
+# Copying source files
 COPY . /usr/src/app
-RUN yarn build
 
+# Building app
+RUN npm run build
+EXPOSE 3000
 
-FROM nginx:1.15-alpine
-RUN rm -rf /etc/nginx/conf.d
-COPY server/nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Running the app
+CMD ["serve", "-s", "build"]
