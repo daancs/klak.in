@@ -4,7 +4,7 @@ const fs = require('fs')
 const logSuccess = async (doorID) => {
     let door;
     console.log(door);
-    if (doorID === 116400) {
+    if (doorID == 116402) {
         door = '7A';
     } else {
         door = '7B';
