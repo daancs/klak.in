@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  frontend:
+    container_name: klak_frontend
+    build: 
+      context: ./frontend/
+      dockerfile: Dockerfile
+    ports: 
+    - "3000:80"
+  
+  postgres:
+    container_name: postgresback
+    image: postgres:10.5
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: mcoa_app
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mcoa_dev
+  
+  backend:
+    build: 
+      context: ./alohomora/
+      dockerfile: Dockerfile
+    container_name: klak_backend
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./alohomora/.env
