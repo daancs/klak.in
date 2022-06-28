@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  frontend:
+    container_name: frontend
+    image: klak_frontend:latest
+    ports: 
+    - "3000:80"
