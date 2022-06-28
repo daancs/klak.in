@@ -1,7 +1,7 @@
-FROM node:10-stretch
+FROM node:16-stretch
 WORKDIR /usr/app
-COPY package.json yarn.lock ./
-RUN yarn --prod
+COPY package.json package-lock.json ./
+RUN npm install
 COPY . ./
-EXPOSE 80
-CMD ["yarn", "start"]
+EXPOSE 8080
+CMD ["npm", "start"]

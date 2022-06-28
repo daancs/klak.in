@@ -1,14 +1,21 @@
 version: "3"
 services:
   postgres:
+    container_name: postgresback
     image: postgres:10.5
     ports:
-      - "5433:5432"
+      - "5432:5432"
     environment:
       POSTGRES_USER: mcoa_app
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mcoa_dev
-  mock_server:
-    image: antonhager/mcoa_mock_server:latest
+  backend:
+    image: klak_backend
+    container_name: backend
+    depends_on:
+      - postgres
     ports:
-      - "1111:1111"
+      - "8080:8080"
+    env_file:
+      - .env
+    

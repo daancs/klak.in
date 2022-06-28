@@ -3,8 +3,8 @@ const fetch = require('node-fetch')
 
 const CSB_URL = process.env.CSB_URL || 'http://localhost:1111'
 const APTUS_URL = process.env.APTUS_URL || 'http://localhost:1111'
-const LOG = require('../secrets').LOG || 'nice'
-const PASSWORD = require('../secrets').PASSWORD || 'nice'
+const LOG = process.env.LOG || 'nice'
+const PASSWORD = process.env.PASSWORD || 'nice'
 
 
 async function getCsbCookies() {
