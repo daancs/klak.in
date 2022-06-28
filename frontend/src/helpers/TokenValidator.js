@@ -1,5 +1,5 @@
-import {pass} from '../secrets.js';
+import {PASS} from '../secrets.js';
 
 export function validateToken(token) {
-    return token === pass;
+    return token === PASS;
 }
