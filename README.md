@@ -1,8 +1,10 @@
-# Opens the door to Chabo
 
-To try it out, please use the [klak.in](https://klak.in). Please don't spread too much, aptus might know their shit and I don't want to get in trouble for excessive use.
+# Opens the door to Chabo
+_For running the opener yourself, see howTo.md_
+
+To try it out, please use the [open.klak.in](https://open.klak.in). Please don't spread too much, aptus might know their shit and I don't want to get in trouble for excessive use.
 <br>
-The main application can be visited at [klak.in](https://klak.in) and the api can be found at [api.klak.in](https://api.klak.in)
+The main application can be visited at [open.klak.in](https://open.klak.in) and the api can be found at [api.klak.in](https://api.klak.in)
 <br>
 This will work with other CSB doors as well. Right now it is hard coded for the B door (if you use the example down below) but the production build has ability to open both doors.
 <br>
