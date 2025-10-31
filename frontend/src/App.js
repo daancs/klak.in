@@ -20,7 +20,7 @@ function App() {
 
 	const [token, setToken] = React.useState("");
 
-	if (!(validateToken(token))) {
+	if (/*!(validateToken(token))*/false) { // If you want authentication, change to !validateToken
 		return (
 			<div className="login">
 				<h1>Authentication needed</h1>
